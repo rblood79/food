@@ -121,7 +121,7 @@
 
 
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.1) 82%), url("./assets/bg.png");
-  background-position: center;
+  background-position: center bottom;
   background-size: cover;
 }
 
@@ -145,9 +145,18 @@
   display: flex;
   flex-direction: column;
 }
-
+.form .inputWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.form .inputWrap + .inputWrap {
+  margin-top: -1px;
+}
 .form .input {
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,0.68);
   border-radius: 8px 8px 0px 0px;
   width: 100%;
   min-height: 48px;
@@ -165,7 +174,7 @@
 
 .form .input.pw {
   border-radius: 0px 0px 8px 8px;
-  margin-top: -1px;
+  
 }
 
 .form .button, .button.save {
@@ -261,7 +270,7 @@
   height: 56px;
   padding: 0px 6px 0px 0px;
   background-color: #fff;
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
 }
@@ -284,7 +293,7 @@
 
 
 .calendar {
-  padding: 0px 16px 68px 16px;
+  padding: 104px 16px 68px 16px;
   min-height: calc(100% - 56px);
 }
 
@@ -353,18 +362,9 @@
   background-color: #fff;
 }
 
-.sheet .close span {
-  display: flex;
-  width: 34px;
-  height: 34px;
-  background-color: #EFEFEF;
-  border-radius: 34px;
-  align-items: center;
-  justify-content: center;
-}
-
-.sheet .close span i {
-  font-size: 24px;
+.sheet .close i {
+  font-size: 34px;
+  color: #2e3b4e;
 }
 
 .sheet .body {
@@ -448,6 +448,7 @@
   margin-top: 8px;
   padding-top: 8px;
   font-weight: 800;
+  color: #fff;
 }
 
 .checkbox {
@@ -462,7 +463,7 @@
 }
 
 .checkbox label {
-  font-weight: 800;
+  font-weight: 500;
   min-width: 96px;
 }
 
@@ -515,8 +516,9 @@
   height: 48px;
   align-items: center;
   border-radius: 8px;
-  position: sticky;
   top: 56px;
+  position: fixed;
+  width: calc(100% - 32px);
 }
 
 .itemComment {

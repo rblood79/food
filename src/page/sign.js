@@ -48,12 +48,12 @@ function App(props) {
           type ?
             <>
               <button className="back" onClick={event => { setType(null) }}><i className="ri-arrow-left-line"></i><span>뒤로</span></button>
-              <input className="input id" type='text' placeholder="군번을 입력하세요" value={num || ''} onChange={({ target: { value } }) => {
+              <div className="inputWrap"><input className="input id" type='text' placeholder="군번을 입력하세요" value={num || ''} onChange={({ target: { value } }) => {
                 setNum(value)
-              }} />
-              <input className="input pw" type='password' placeholder="비밀번호를 입력하세요" value={pw || ''} onChange={({ target: { value } }) => {
+              }} /></div>
+              <div className="inputWrap"><input className="input pw" type='password' placeholder="비밀번호를 입력하세요" value={pw || ''} onChange={({ target: { value } }) => {
                 setPw(value)
-              }} autoComplete="off" />
+              }} autoComplete="off" /></div>
               <span className="comment">아이디와 비밀번호는 군번이며 - 를 제외하고 입력하세요</span>
               <button className="button" onClick={click}>로그인</button>
             </>

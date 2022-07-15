@@ -97,7 +97,7 @@ function App(props) {
     for (let i = 0; i < 3; i++) {
       const dd = i === 0 ? br : i === 1 ? lu : di;
       result.push(
-        <div key={'item' + i} className="item" style={{ background: `linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 62%), url(${process.env.PUBLIC_URL + "foods/" + menu[i].image})` }}>
+        <div key={'item' + i} className="item" style={{ background: `linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 62%), url(${process.env.PUBLIC_URL + "/foods/" + menu[i].image})` }}>
           <div className="wrap">
             <div className="title"><span className="sub">{i === 0 ? '든든한' : i === 1 ? '특별한' : '맛있는'}</span>{i === 0 ? '조식' : i === 1 ? '중식' : '석식'}</div>
             <div className="contents">
@@ -161,7 +161,7 @@ function App(props) {
     <div className={classNames('sheet', props.date && 'sheetActive')}>
       <div className="head">
         <div className="title">{props.date ? moment(props.date).format("YYYY년 MM월 DD일") : '취식일을 선택하세요'}</div>
-        {props.date && <button className="close" onClick={props.reset}><span><i className="ri-close-line"></i></span></button>}
+        {props.date && <button className="close" onClick={props.reset}><i className="ri-close-circle-fill"></i></button>}
       </div>
       <div className="body" ref={bodyRef}>
         <div className="itemComment">
