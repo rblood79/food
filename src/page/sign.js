@@ -40,7 +40,7 @@ function App(props) {
   <span>청</span>*/}
           </div>
           <img className='visualLogo' src={mnd} alt={'logo'} />
-          <span className="visualTitle">장병 취식일자 신청</span>
+          <span className="visualTitle"></span>
         </div>
       </div>
       <div className="form">
