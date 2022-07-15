@@ -7,6 +7,8 @@ import moment from "moment";
 import 'moment/locale/ko';
 import '../admin.css';
 
+import mnd from '../assets/logo.svg';
+
 import { doc, getDoc, setDoc, query, getDocs, documentId, where } from 'firebase/firestore';
 
 function App(props) {
@@ -126,7 +128,7 @@ function App(props) {
     <div className="admin">
       <header className='header'>
         <div className='headerWrap'>
-          <div className="headTitle"><img src="./logo.svg" alt="MND" /> 장병 취식일자 관리</div>
+          <div className="headTitle"><img src={mnd} alt="MND" /> 장병 취식일자 관리</div>
           <nav className="nav">
             <button className="navButton active" ><i className="ri-pie-chart-2-fill"></i>현황</button>
             <button className="navButton" onClick={() => { alert('시험버전에서 제공하지 않습니다') }}><i className="ri-user-add-line"></i>인원</button>

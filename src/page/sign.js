@@ -8,8 +8,8 @@ function App(props) {
   let reg_num = /^[0-9]{6,10}$/; // 전화번호 숫자만
 
   const [type, setType] = useState(null);
-  const [num, setNum] = useState('000000');
-  const [pw, setPw] = useState('000000');
+  const [num, setNum] = useState(null);
+  const [pw, setPw] = useState(null);
 
   const click = async () => {
     const docRef = doc(props.serving, "ini");

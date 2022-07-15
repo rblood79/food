@@ -35,6 +35,10 @@
     align-items: center;
 }
 
+.headTitle img{
+    margin-right: 8px;
+}
+
 .spaceButton {
     flex: 1 1;
     display: flex;
