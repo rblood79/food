@@ -277,6 +277,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .user {
@@ -315,6 +316,7 @@
 .backgroundActive {
   background: rgba(0, 0, 0, 0.24);
   pointer-events: all;
+  z-index: 2;
 }
 
 .sheet {
@@ -330,15 +332,17 @@
   /*top: calc(100vh - 66px);*/
   box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.24);
   transition: all ease-in-out 0.3s;
-
+  z-index: 3;
   display: flex;
   flex-direction: column;
   height: 100%;
   border: 2px solid #f00;
+  transform: translateY(50%);
 }
 
 .sheetActive {
-  transform: translateY(calc(-100vh + 122px));
+  /*transform: translateY(calc(-100vh + 122px));*/
+  transform: translateY(56px);
 }
 
 
@@ -535,8 +539,9 @@
   align-items: center;
   border-radius: 8px;
   top: 56px;
+  left: 14px;
   position: fixed;
-  width: calc(100% - 32px);
+  width: calc(100% - 28px);
 }
 
 .itemComment {
