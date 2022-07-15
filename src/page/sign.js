@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { isMobile } from 'react-device-detect';
 import { doc, getDoc } from 'firebase/firestore';
+import classNames from 'classnames';
 
 import mnd from '../assets/logo.svg';
 
@@ -23,7 +24,7 @@ function App(props) {
   }
 
   return (
-    <div className="sign">
+    <div className={classNames('sign', type === 'army' ? 'sign0' : type === 'air' ? 'sign1' : type === 'navy' && 'sign2')}>
       <div className="visual">
         <div className="visualText">
           <div className="textGroup">
@@ -59,7 +60,7 @@ function App(props) {
             </>
             :
             <>
-              <span className="select">소속군을 선택하세요<i className="ri-arrow-down-s-line"></i></span>
+              {/*<span className="select">소속군을 선택하세요<i className="ri-arrow-down-s-line"></i></span>*/}
               <div className="typeGroup">
                 <div className="buttonWrap army"><button className="button army" onClick={event => { setType('army') }}>육군</button></div>
                 <div className="buttonWrap air"><button className="button air" onClick={event => { setType('air') }}>공군</button></div>

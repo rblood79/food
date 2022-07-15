@@ -87,11 +87,20 @@
   border-bottom-left-radius: 0 !important;
 }
 
+.textGroup {
+  color: #fff;
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.24);
+
+  /*background-image: linear-gradient(45deg, #f36910 10%, #ffc871 50%, #ff9d06 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;*/
+}
+
 .typeGroup .button.army::before {
   content: '강한';
   font-size: 12px;
   margin-right: 2px;
-  color: #ccc;
   letter-spacing: 0;
 }
 
@@ -99,7 +108,6 @@
   content: '정예';
   font-size: 12px;
   margin-right: 2px;
-  color: #ccc;
   letter-spacing: 0;
 }
 
@@ -107,7 +115,6 @@
   content: '필승';
   font-size: 12px;
   margin-right: 2px;
-  color: #ccc;
   letter-spacing: 0;
 }
 
@@ -118,6 +125,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
+  transition: all 0.6s ease-in-out;
 
 
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.1) 82%), url("./assets/bg.png");
@@ -125,18 +133,37 @@
   background-size: cover;
 }
 
+.sign0 {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.1) 56%), url("./assets/army.png");
+  background-position: right top;
+  background-size: cover;
+}
+
+.sign1 {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%), url("./assets/air.png");
+  background-position: center top;
+  background-size: cover;
+}
+
+.sign2 {
+  background: linear-gradient(to bottom, rgba(214, 219, 228, 0.9) 0%, rgba(0, 0, 0, 0.2) 48%), url("./assets/navy.png");
+  background-position: center top;
+  background-size: cover;
+}
+
 .visual {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex: 1;
+  padding-top: 24px;
 }
 
 
 .visualLogo {
-  width: 168px;
+  width: 128px;
   padding-top: 16px;
 }
 
@@ -159,7 +186,7 @@
 }
 
 .form .input {
-  border: 1px solid rgba(0, 0, 0, 0.68);
+  border: 1px solid rgba(0, 0, 0, 0.36);
   border-radius: 8px 8px 0px 0px;
   width: 100%;
   height: 48px;
@@ -571,7 +598,6 @@
 .textWrap {
   font-size: 40px;
   font-weight: 100;
-  color: #fff;
   letter-spacing: 2px;
 }
 
