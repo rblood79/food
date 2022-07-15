@@ -1,0 +1,323 @@
+.admin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 1400px;
+
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    height: 56px;
+    background: #0277bd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.headerWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.headTitle {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 900;
+    flex: 1 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.spaceButton {
+    flex: 1 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #fff;
+    font-size: 14px;
+}
+
+.header .nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.header .nav .navButton {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 0;
+    border: 0;
+    height: 56px !important;
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #a7a7a7;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.header .nav .navButton i {
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.header .nav .navButton.active {
+    color: #00549a;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.section {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 48px 0;
+}
+
+.resultHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.title {
+    padding: 6px 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 36px;
+    text-align: left;
+    color: #0067b8;
+    display: flex;
+    justify-content: center;
+}
+
+.titleSub {
+    font-size: 14px;
+    color: #343434;
+    margin-left: 6px;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, .16);
+    background-color: #fff;
+}
+
+.buttonGroup button {
+    border: none;
+    padding: 0 16px;
+    min-width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 36px !important;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .016);
+}
+
+.buttonGroup button i {
+    font-size: 18px;
+    margin-right: 4px;
+}
+
+.wrap {
+    display: flex;
+}
+
+.tableContents {
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #242424;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+.table td, .table th {
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 12px 8px;
+    min-height: 48px;
+    min-width: 48px;
+    word-break: keep-all;
+    text-align: center;
+}
+
+.table thead tr th {
+    background-color: #e8e8e8;
+}
+
+
+tfoot tr:first-child th {
+    border-top: 2px solid #242424 !important;
+    background-color: #e8e8e8;
+}
+
+tfoot tr:last-child th {
+    font-weight: 500 !important;
+    background-color: #eafcff;
+}
+
+.pay {
+    text-align: end !important;
+}
+
+th span {
+    display: block;
+    padding: 4px 0px;
+}
+
+.total {
+    color: #343434;
+}
+
+.minus {
+    color: #f00;
+    font-weight: 800;
+}
+
+.end {
+    color: #005296;
+}
+
+.fix {
+    color: transparent;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0 48px 0;
+    color: #a7a7a7;
+}
+
+caption {
+    padding: 16px;
+    color: #005296;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.setting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 48px 0;
+    border: 2px solid #242424;
+    padding: 16px 16px;
+    width: 100%;
+}
+
+.setting label {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 8px 0 32px;
+}
+
+.setting>label:first-child {
+    margin-left: 0;
+}
+
+.setting input, .setting input:focus, .setting input:focus-visible {
+    height: 36px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding: 0 8px;
+    outline: none;
+    color: #646464;
+    font-weight: 800;
+    background-color: #f4f4f4;
+}
+
+.months {
+    display: flex;
+    align-items: center;
+}
+
+.months .buttonWrap button {
+    height: 36px;
+    margin-left: -1px;
+    border: 1px solid #dcdcdc;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 0 8px;
+    color: #646464;
+    cursor: pointer;
+}
+
+.months .buttonWrap button:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.months .buttonWrap button:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.datepicker {
+    width: 100%;
+    border: none;
+}
+
+.react-datepicker__input-container {
+    display: flex;
+
+}
+
+.react-datepicker__day:hover, .react-datepicker__month-text:hover, .react-datepicker__quarter-text:hover, .react-datepicker__year-text:hover {
+    border-radius: 100px;
+}
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
+    background-color: #53576d;
+    border-radius: 100px;
+}
+
+.react-datepicker__day--selected:hover, .react-datepicker__day--in-selecting-range:hover, .react-datepicker__day--in-range:hover, .react-datepicker__month-text--selected:hover, .react-datepicker__month-text--in-selecting-range:hover, .react-datepicker__month-text--in-range:hover, .react-datepicker__quarter-text--selected:hover, .react-datepicker__quarter-text--in-selecting-range:hover, .react-datepicker__quarter-text--in-range:hover, .react-datepicker__year-text--selected:hover, .react-datepicker__year-text--in-selecting-range:hover, .react-datepicker__year-text--in-range:hover {
+    background-color: #53576d;
+    border-radius: 100px;
+}
+
+.react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected {
+    background-color: #53576d;
+    border-radius: 100px;
+}
+
+.react-datepicker__day--outside-month {
+    color: #ccc;
+}
