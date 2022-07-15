@@ -333,7 +333,8 @@
 
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 100%;
+  border: 2px solid #f00;
 }
 
 .sheetActive {
@@ -378,8 +379,10 @@
 
 .sheet .body {
   padding: 16px 0 0;
-  height: calc(100% - 112px);
-  overflow-x: auto;
+  /*height: calc(100% - 112px);*/
+  overflow-y: auto;
+  flex: 1;
+  border: 1px solid #f00;
 }
 
 .sheet .body .item {
@@ -442,9 +445,9 @@
 }
 
 .sheet .button.save {
-  position: fixed;
+  /*position: fixed;
   bottom: 0;
-  width: calc(100% - 32px);
+  width: calc(100% - 32px);*/
 }
 
 .contents {}
