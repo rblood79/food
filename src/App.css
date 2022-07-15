@@ -145,6 +145,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .form .inputWrap {
   display: flex;
   flex-direction: column;
@@ -152,11 +153,13 @@
   align-items: center;
   position: relative;
 }
-.form .inputWrap + .inputWrap {
+
+.form .inputWrap+.inputWrap {
   margin-top: -1px;
 }
+
 .form .input {
-  border: 1px solid rgba(0,0,0,0.68);
+  border: 1px solid rgba(0, 0, 0, 0.68);
   border-radius: 8px 8px 0px 0px;
   width: 100%;
   height: 48px;
@@ -175,7 +178,7 @@
 
 .form .input.pw {
   border-radius: 0px 0px 8px 8px;
-  
+
 }
 
 .form .button, .button.save {
@@ -232,7 +235,7 @@
   align-items: center;
 }
 
-.form .select i{
+.form .select i {
   color: #E67E22;
   font-size: 28px;
   font-weight: 800;
@@ -327,6 +330,10 @@
   /*top: calc(100vh - 66px);*/
   box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.24);
   transition: all ease-in-out 0.3s;
+
+  display: flex;
+  flex-direction: column;
+  height: 50%;
 }
 
 .sheetActive {
@@ -439,6 +446,7 @@
   bottom: 0;
   width: calc(100% - 32px);
 }
+
 .contents {}
 
 .contents .foodItem {
@@ -546,16 +554,18 @@
 
 .visualText {
   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 .visualTitle {
   color: #efefef;
   font-size: 16px;
   font-weight: 800;
   margin-top: 8px;
 }
+
 .textWrap {
   font-size: 40px;
   font-weight: 100;
@@ -567,6 +577,7 @@
   font-weight: 800;
   margin-right: 8px;
 }
+
 /*.visual .visualText {
   position: relative;
   z-index: 1;
@@ -646,6 +657,7 @@
 }
 
 @media (max-width: 424.9px) {
+
   /*.App {
     justify-content: center;
   }*/
