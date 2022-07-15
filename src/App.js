@@ -48,7 +48,7 @@ function App(props) {
           </header>
           <Calendar onClick={setDay} />
           <div className={classNames('background', date && 'backgroundActive')} />
-          <Serving date={date} user={user} serving={props.serving} reset={reset} />
+          {/*<Serving date={date} user={user} serving={props.serving} reset={reset} />*/}
         </>
         :
         <Sign serving={props.serving} sign={sign}/>
