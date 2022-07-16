@@ -248,12 +248,11 @@
   align-items: center;
   padding: 0;
   color: #fff;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .form .back i {
-  font-size: 21px;
-  font-weight: 100;
+  font-size: 24px;
   color: #0277bd;
   margin-right: 4px;
 }
@@ -261,7 +260,6 @@
 .form .back span {
   font-size: 16px;
   font-weight: 400;
-  margin-top: 4px;
 }
 
 .form .select {
@@ -320,18 +318,26 @@
 
 .user {
   color: #242424;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button.menu, .button.back {
+  padding: 0;
   border: none;
   height: 56px;
   width: 56px;
   background-color: transparent;
   color: #242424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button.menu i, .button.back i {
-  font-weight: 100;
   font-size: 24px;
 }
 
@@ -365,7 +371,8 @@
   padding: 8px 16px 16px 16px;
   position: fixed;
   top: 0;
-  box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.24);
+  /*box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.24);*/
+  filter: drop-shadow(2px -4px 8px rgba(0,0,0,0.24));
   transition: all ease-in-out 0.3s;
   z-index: 3;
   display: flex;
@@ -693,7 +700,8 @@
   width: 374px;
   height: 768px;
   border-radius: 16px;
-  box-shadow: 0 0 24px rgba(0, 0, 0, 0.48);
+  /*box-shadow: 0 0 24px rgba(0, 0, 0, 0.48);*/
+  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.48));
 }
 
 @media (max-width: 424.9px) {

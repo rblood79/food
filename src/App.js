@@ -42,7 +42,7 @@ function App(props) {
           <header className="App-header">
             <button className="button back" onClick={event => { setUser(null) }}><i className="ri-arrow-left-line"></i></button>
             <div className='user'>
-              {user && user.userNum}님 취사일정
+              {user && user.userNum}님 취식일정
             </div>
             <button className='button menu' onClick={event => { alert('시험버전에서 제공하지 않습니다') }}><i className="ri-menu-fill"></i></button>
           </header>
