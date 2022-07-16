@@ -98,7 +98,7 @@
     font-weight: 800;
     font-size: 21px;
     letter-spacing: -0.25px;
-    color: #939393;
+    color: #2e3b4e;
     padding: 0;
     margin: 48px 0 16px 0;
   }
@@ -119,6 +119,7 @@
     letter-spacing: -0.25px;
     line-height: 1;
     font-weight: 400;
+    color: #939393;
   }
   .mobile-datepicker .month .month-title span::after {
     content: '년';
