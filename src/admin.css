@@ -234,7 +234,7 @@ caption {
 
 .setting {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 48px 0;
     border: 2px solid #242424;
@@ -245,14 +245,12 @@ caption {
 .setting label {
     font-size: 14px;
     font-weight: 400;
-    margin: 0 8px 0 32px;
-}
-
-.setting>label:first-child {
-    margin-left: 0;
+    margin: 0 8px 0 0;
 }
 
 .setting input, .setting input:focus, .setting input:focus-visible {
+    width: 144px;
+    max-width: 144px;
     height: 36px;
     border: 1px solid #dcdcdc;
     border-radius: 4px;
@@ -274,7 +272,7 @@ caption {
     border: 1px solid #dcdcdc;
     font-size: 14px;
     font-weight: 800;
-    padding: 0 8px;
+    padding: 0 16px;
     color: #646464;
     cursor: pointer;
 }

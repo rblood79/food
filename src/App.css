@@ -89,7 +89,7 @@
 
 .textGroup {
   color: #fff;
-  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.24);
+  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.24));
 
   /*background-image: linear-gradient(45deg, #f36910 10%, #ffc871 50%, #ff9d06 80%);
   -webkit-background-clip: text;
@@ -701,7 +701,7 @@
   height: 768px;
   border-radius: 16px;
   /*box-shadow: 0 0 24px rgba(0, 0, 0, 0.48);*/
-  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.48));
+  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.24));
 }
 
 @media (max-width: 424.9px) {
