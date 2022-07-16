@@ -117,6 +117,14 @@
   margin-right: 2px;
   letter-spacing: 0;
 }
+.preLoad {
+  position: fixed;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+}
 
 .sign {
   height: 100%;
