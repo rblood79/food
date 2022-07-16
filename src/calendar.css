@@ -118,6 +118,7 @@
     line-height: 1.23;
     letter-spacing: -0.25px;
     line-height: 1;
+    font-weight: 400;
   }
   .mobile-datepicker .month .month-title span::after {
     content: '년';

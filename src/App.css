@@ -258,7 +258,7 @@
 
 .form .back span {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   margin-top: 4px;
 }
 
@@ -306,7 +306,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 400;
   height: 56px;
   padding: 0px 6px 0px 0px;
   background-color: #fff;
@@ -387,7 +387,7 @@
 
 .sheet .head .title {
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 400;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -491,15 +491,15 @@
   flex-direction: row;
   justify-content: space-between;
   font-size: 12px;
-  font-weight: 800;
-  text-shadow: 0 0 4px black;
+  font-weight: 400;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.24);
 }
 
 .contents .foodItem.total {
   border-top: 1px dotted #f4f4f4;
   margin-top: 8px;
   padding-top: 8px;
-  font-weight: 800;
+  font-weight: 400;
   color: #fff;
 }
 
@@ -515,7 +515,7 @@
 }
 
 .checkbox label {
-  font-weight: 500;
+  font-weight: 400;
   min-width: 96px;
 }
 

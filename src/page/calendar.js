@@ -11,7 +11,7 @@ function App(props) {
         <MobileCalendar
           minDate={moment().add(1, 'd')}
           //selectedDate={moment()}
-          maxDate={moment().add(3, 'M')}
+          maxDate={moment().add(1, 'M')}
           onSelect={date => {props.onClick(date)}}
         />
       </div>
