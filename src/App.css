@@ -479,22 +479,14 @@
   margin-right: 4px;
   text-decoration: underline;
   text-decoration-color: #E67E22;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
+  /*: 1px;
+  text-underline-offset: 4px;*/
   color: #939393;
 }
 
 .sheet .body .item:last-child {
   margin-bottom: 0px;
 }
-
-.sheet .button.save {
-  /*position: fixed;
-  bottom: 0;
-  width: calc(100% - 32px);*/
-}
-
-.contents {}
 
 .contents .foodItem {
   display: flex;
