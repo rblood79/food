@@ -25,7 +25,7 @@ function App(props) {
 
   return (
     <div className={classNames('sign', type === 'army' ? 'sign0' : type === 'air' ? 'sign1' : type === 'navy' && 'sign2')}>
-      <div className='preLoad'><span className='sign0' /><span className='sign1' /><span className='sign2' /></div>
+      <div className='preLoad'><span className='sign0' /><span className='sign1' /><span className='sign2' /><i className="ri-arrow-left-line"/></div>
       <div className="visual">
         <div className="visualText">
           <div className="textGroup">

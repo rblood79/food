@@ -311,10 +311,10 @@ function App(props) {
                           <span className="fix">.{/*((diSum / (days.length * user)) * 100).toFixed(6)*/}</span>
                         </th>
                         <th className="pay">
-                          <span className="total">{(days.length * (user * 3) * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="end">{(days.length * ((user * 3) - totalSum) * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="minus">-{(totalSum * cost).toLocaleString('ko-KR')} 원</span>
-                          <span>{((totalSum / (days.length * (user * 3))) * 100).toFixed(6)}% 절감</span>
+                          <span className="total">{(days.length * (user * 3) * cost).toLocaleString('ko-KR')} 원 계획</span>
+                          <span className="end">{(days.length * ((user * 3) - totalSum) * cost).toLocaleString('ko-KR')} 원 사용</span>
+                          <span className="minus">-{(totalSum * cost).toLocaleString('ko-KR')} 원 절감</span>
+                          <span>{((totalSum / (days.length * (user * 3))) * 100).toFixed(6)}% 감소</span>
                         </th>
                       </tr>
                     </>
