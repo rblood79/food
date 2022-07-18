@@ -12,7 +12,7 @@ import mnd from '../assets/logo.svg';
 import { doc, getDoc, setDoc, query, getDocs, documentId, where } from 'firebase/firestore';
 
 function App(props) {
-  
+
   const [data, setData] = useState(null);
 
   const [startDate, setStartDate] = useState(moment().startOf('week').format('YYYYMMDD'));
@@ -122,7 +122,7 @@ function App(props) {
 
   useEffect(() => {
     ini();
-  },[])
+  }, [])
 
   return (
     <div className="admin">
@@ -294,27 +294,27 @@ function App(props) {
                         </th>
                         <th className="pay">
                           <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="end">{(days.length * (user - brSum) * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="minus">-{(brSum * cost).toLocaleString('ko-KR')} 원</span>
+                          <span className="end">{(((days.length * user) - brSum) * cost).toLocaleString('ko-KR')} 원</span>
+                          <span className="minus">{brSum > 0 && '-'}{(brSum * cost).toLocaleString('ko-KR')} 원</span>
                           <span className="fix">.{/*((brSum / (days.length * user)) * 100).toFixed(6)*/}</span>
                         </th>
                         <th className="pay">
                           <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="end">{(days.length * (user - luSum) * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="minus">-{(luSum * cost).toLocaleString('ko-KR')} 원</span>
+                          <span className="end">{(((days.length * user) - luSum) * cost).toLocaleString('ko-KR')} 원</span>
+                          <span className="minus">{luSum > 0 && '-'}{(luSum * cost).toLocaleString('ko-KR')} 원</span>
                           <span className="fix">.{/*((luSum / (days.length * user)) * 100).toFixed(6)*/}</span>
                         </th>
                         <th className="pay">
                           <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="end">{(days.length * (user - diSum) * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="minus">-{(diSum * cost).toLocaleString('ko-KR')} 원</span>
+                          <span className="end">{(((days.length * user) - diSum) * cost).toLocaleString('ko-KR')} 원</span>
+                          <span className="minus">{diSum > 0 && '-'}{(diSum * cost).toLocaleString('ko-KR')} 원</span>
                           <span className="fix">.{/*((diSum / (days.length * user)) * 100).toFixed(6)*/}</span>
                         </th>
                         <th className="pay">
                           <span className="total">{(days.length * (user * 3) * cost).toLocaleString('ko-KR')} 원 계획</span>
-                          <span className="end">{(days.length * ((user * 3) - totalSum) * cost).toLocaleString('ko-KR')} 원 사용</span>
-                          <span className="minus">-{(totalSum * cost).toLocaleString('ko-KR')} 원 절감</span>
-                          <span>{((totalSum / (days.length * (user * 3))) * 100).toFixed(6)}% 감소</span>
+                          <span className="end">{(((days.length * (user * 3)) - totalSum) * cost).toLocaleString('ko-KR')} 원 사용</span>
+                          <span className="minus">{totalSum > 0 && '-'}{(totalSum * cost).toLocaleString('ko-KR')} 원 절감</span>
+                          <span>{((totalSum / (days.length * (user * 3))) * 100).toFixed(2)}% 감소</span>
                         </th>
                       </tr>
                     </>
