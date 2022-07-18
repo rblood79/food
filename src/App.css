@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  position: relative;
 }
 
 .sign, .App-header, .calendar, .sheet {
@@ -521,6 +522,10 @@
   min-width: 96px;
 }
 
+.checkbox label:hover, .checkbox label:focus {
+  background-color: transparent;
+}
+
 .checkbox input {
   width: 1px;
   color: #fff;
@@ -535,7 +540,7 @@
   display: flex;
   width: 48px;
   border-radius: 24px;
-  transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.2s;
 }
 
 .checkbox input::after {

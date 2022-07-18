@@ -7,11 +7,13 @@ import Sign from './page/sign';
 import Admin from './page/admin';
 import Calendar from './page/calendar';
 import Serving from './page/serving';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 //import { doc, setDoc, query, where, getDocs } from 'firebase/firestore';
 
 function App(props) {
+  const [height, setHeight] = useState(0)
+  const appRef = useRef(null)
 
   const [user, setUser] = useState(null);
   const [date, setDate] = useState();
@@ -33,10 +35,11 @@ function App(props) {
 
   useEffect(() => {
     //onLoad()
+    setHeight(appRef.current.clientHeight)
   }, [])
 
   return (
-    <div className="App">
+    <div className="App" ref={appRef}>
       {user ? user.userType === 'admin' ? <Admin serving={props.serving} /> :
         <>
           <header className="App-header">
@@ -51,9 +54,11 @@ function App(props) {
           <Serving date={date} user={user} serving={props.serving} reset={reset} />
         </>
         :
-        <Sign serving={props.serving} sign={sign}/>
+        <Sign serving={props.serving} sign={sign} />
       }
-
+      <div style={{ 'position': 'absolute', 'zIndex': '100', 'left': 0, 'top': 0, color: '#f00' }}>
+        height: {height}
+      </div>
     </div>
   );
 }
