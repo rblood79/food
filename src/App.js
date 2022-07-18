@@ -32,32 +32,40 @@ function App(props) {
   const reset = (item) => {
     setDate(null)
   }
-
-  useEffect(() => {
-    //onLoad()
+  const resize = () => {
+    console.log('aaa', appRef.current.clientHeight)
     setHeight(appRef.current.clientHeight)
+  }
+  useEffect(() => {
+    resize();
+    /*window.addEventListener('resize', resize);
+    return () => {
+      window.removeEventListener('resize', resize)
+    }*/
   }, [])
 
   return (
-    <div className="App" ref={appRef}>
-      {user ? user.userType === 'admin' ? <Admin serving={props.serving} /> :
-        <>
-          <header className="App-header">
-            <button className="button back" onClick={event => { setUser(null) }}><i className="ri-arrow-left-line"></i></button>
-            <div className='user'>
-              {user && user.userNum}님 취식일정
-            </div>
-            <button className='button menu' onClick={event => { alert('시험버전에서 제공하지 않습니다') }}><i className="ri-menu-fill"></i></button>
-          </header>
-          <Calendar onClick={setDay} />
-          <div className={classNames('background', date && 'backgroundActive')} />
-          <Serving date={date} user={user} serving={props.serving} reset={reset} />
-        </>
-        :
-        <Sign serving={props.serving} sign={sign} />
-      }
-      <div style={{ 'position': 'absolute', 'zIndex': '100', 'left': 0, 'top': 0, color: '#f00' }}>
-        height: {height}
+    <div className="App" ref={appRef} >
+      <div style={{ 'border': '2px solid #f00', 'width': '100%', 'height': '100%', 'maxHeight': height }}>
+        {user ? user.userType === 'admin' ? <Admin serving={props.serving} /> :
+          <>
+            <header className="App-header">
+              <button className="button back" onClick={event => { setUser(null) }}><i className="ri-arrow-left-line"></i></button>
+              <div className='user'>
+                {user && user.userNum}님 취식일정
+              </div>
+              <button className='button menu' onClick={event => { alert('시험버전에서 제공하지 않습니다') }}><i className="ri-menu-fill"></i></button>
+            </header>
+            <Calendar onClick={setDay} />
+            <div className={classNames('background', date && 'backgroundActive')} />
+            <Serving date={date} user={user} serving={props.serving} reset={reset} />
+          </>
+          :
+          <Sign serving={props.serving} sign={sign} />
+        }
+        <div style={{ 'position': 'absolute', 'zIndex': '100', 'left': 0, 'top': 0, color: '#f00' }}>
+          height: {height}
+        </div>
       </div>
     </div>
   );
