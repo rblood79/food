@@ -7,14 +7,11 @@ import Sign from './page/sign';
 import Admin from './page/admin';
 import Calendar from './page/calendar';
 import Serving from './page/serving';
-import { useEffect, useState, useRef } from 'react';
+import { useState } from 'react';
 
 //import { doc, setDoc, query, where, getDocs } from 'firebase/firestore';
 
 function App(props) {
-  const [height, setHeight] = useState(0)
-  const appRef = useRef(null)
-
   const [user, setUser] = useState(null);
   const [date, setDate] = useState();
 
@@ -32,21 +29,9 @@ function App(props) {
   const reset = (item) => {
     setDate(null)
   }
-  const resize = () => {
-    console.log('aaa', appRef.current.clientHeight)
-    setHeight(appRef.current.clientHeight)
-  }
-  useEffect(() => {
-    resize();
-    /*window.addEventListener('resize', resize);
-    return () => {
-      window.removeEventListener('resize', resize)
-    }*/
-  }, [])
 
   return (
-    <div className="App" ref={appRef} >
-      <div style={{ 'border': '2px solid #f00', 'width': '100%', 'height': '100%', 'maxHeight': height }}>
+    <div className="App">
         {user ? user.userType === 'admin' ? <Admin serving={props.serving} /> :
           <>
             <header className="App-header">
@@ -63,11 +48,7 @@ function App(props) {
           :
           <Sign serving={props.serving} sign={sign} />
         }
-        <div style={{ 'position': 'absolute', 'zIndex': '100', 'left': 0, 'top': 0, color: '#f00' }}>
-          height: {height}
-        </div>
       </div>
-    </div>
   );
 }
 
