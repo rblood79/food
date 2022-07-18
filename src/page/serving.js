@@ -10,6 +10,8 @@ import { doc, setDoc, getDoc, arrayUnion, arrayRemove } from 'firebase/firestore
 function App(props) {
   const bodyRef = useRef(null);
 
+  const [flag, setFlag] = useState(false);
+
   const [br, setBr] = useState(true);
   const [lu, setLu] = useState(true);
   const [di, setDi] = useState(true);
@@ -81,15 +83,18 @@ function App(props) {
   )
 
   const save = async () => {
-    //console.log(moment(props.date).format("YYYYMMDD"))
-    //console.log(props.user, props.date, br, lu, di)
     const dateRef = doc(props.serving, moment(props.date).format("YYYYMMDD"));
     setDoc(dateRef, {
       조식: br ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
       중식: lu ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
       석식: di ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
     }, { merge: true });
-    props.reset();
+    //props.reset();
+    setFlag(true);
+  }
+
+  const end = (e) => {
+    props.reset(e);
   }
 
   const items = () => {
@@ -150,6 +155,7 @@ function App(props) {
     const temp = foods.slice();
     setMenu(temp.sort(() => Math.random() - 0.5))
 
+    setFlag(false);
     setBr(true);
     setLu(true);
     setDi(true);
@@ -159,17 +165,34 @@ function App(props) {
 
   return (
     <div className={classNames('sheet', props.date && 'sheetActive')}>
-      <div className="head">
-        <div className="title">{props.date ? moment(props.date).format("YYYY년 MM월 DD일") : '취식일을 선택하세요'}</div>
-        {props.date && <button className="close" onClick={props.reset}><i className="ri-close-circle-fill"></i></button>}
-      </div>
-      <div className="body" ref={bodyRef}>
-        <div className="itemComment">
-          <span>시험버전은 통계확인을 위한 용도이며 실제 취사유무에는 반영되지 않으며 메뉴는 랜덤으로 보여지게 됩니다.</span>
+      {!flag ? <>
+        <div className="head">
+          <div className="title">{props.date ? moment(props.date).format("YYYY년 MM월 DD일") : '취식일을 선택하세요'}</div>
+          {props.date && <button className="close" onClick={() => { end(false) }}><i className="ri-close-circle-fill"></i></button>}
         </div>
-        {menu && items()}
-      </div>
-      <button className="button save" onClick={save}>저장</button>
+        <div className="body" ref={bodyRef}>
+          <div className="itemComment">
+            <span>시험버전은 통계확인을 위한 용도이며 실제 취사유무에는 반영되지 않으며 메뉴는 랜덤으로 보여지게 됩니다.</span>
+          </div>
+          {menu && items()}
+        </div>
+        <button className="button save" onClick={save}>신청</button>
+      </> : <>
+        <div className="body comp" ref={bodyRef}>
+          <div>
+            <i className="ri-checkbox-circle-fill"></i>
+            
+          </div>
+          <span>신청이 완료 되었습니다</span>
+        </div>
+        <div className="comment">다른 취식일자를 신청하시려면 "계속" 버튼을, 그만하기를 원하시면 "종료" 버튼을 눌러주세요. </div>
+        <div className="buttonGroup">
+          <button className="button" onClick={() => { end(true) }}>종료</button>
+          <button className="button" onClick={() => { end(false) }}>계속</button>
+        </div>
+      </>}
+
+
     </div>
   );
 

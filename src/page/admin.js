@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { isMobile } from 'react-device-detect';
 import _ from 'lodash';
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
@@ -103,11 +104,13 @@ function App(props) {
 
       result.push(
         <tr key={days[i]}>
-          {i === 0 && <><td rowSpan={days.length}>공군</td><td rowSpan={days.length}>11비행단</td></>}
+          {i === 0 && <><td rowSpan={days.length}>oo부대</td></>}
           <td>{moment(days[i]).format("MM월 DD일 (dd)")}</td>
-          <td>{user} ({user - brUser} / {brUser})</td>
-          <td>{user} ({user - luUser} / {luUser})</td>
-          <td>{user} ({user - diUser} / {diUser})</td>
+          {!isMobile && <>
+            <td>{user} ({user - brUser} / {brUser})</td>
+            <td>{user} ({user - luUser} / {luUser})</td>
+            <td>{user} ({user - diUser} / {diUser})</td>
+          </>}
           <td>{user * 3} ({(user * 3) - total} / {total})</td>
         </tr>
       )
@@ -128,15 +131,14 @@ function App(props) {
     <div className="admin">
       <header className='header'>
         <div className='headerWrap'>
-          <div className="headTitle"><img src={mnd} alt="MND" /> 장병 취식일자 관리</div>
+          <div className="headTitle"><img src={mnd} alt="MND" /> 장병 급식 신청 관리</div>
           <nav className="nav">
             <button className="navButton active" ><i className="ri-pie-chart-2-fill"></i>현황</button>
             <button className="navButton" onClick={() => { alert('시험버전에서 제공하지 않습니다') }}><i className="ri-user-add-line"></i>인원</button>
             <button className="navButton" onClick={() => { alert('시험버전에서 제공하지 않습니다') }}><i className="ri-shopping-cart-2-line"></i>자재</button>
-
             <button className="navButton" onClick={() => { alert('시험버전에서 제공하지 않습니다') }}><i className="ri-database-2-line"></i>DB</button>
           </nav>
-          <div className="spaceButton">{admin} 관리자님 환영합니다</div>
+          {!isMobile && <div className="spaceButton">{admin} 관리자님 환영합니다</div>}
         </div>
       </header>
       <main className='main'>
@@ -145,11 +147,13 @@ function App(props) {
             <h2 className="title">종합현황 <span className="titleSub">시험버전</span></h2>
             <div className="buttonGroup">
               <button onClick={() => { onLoad() }}><i className="ri-refresh-line"></i>재조회</button>
-              <div className="wrap">
-                <button disabled><i className="ri-folder-upload-line"></i>취사인원 업로드</button>
-                <button disabled><i className="ri-folder-download-line"></i>부대별 현황 다운로드</button>
-                <button disabled><i className="ri-printer-line"></i>화면인쇄</button>
-              </div>
+              {!isMobile &&
+                <div className="wrap">
+                  <button disabled><i className="ri-folder-upload-line"></i>취사인원 업로드</button>
+                  <button disabled><i className="ri-folder-download-line"></i>부대별 현황 다운로드</button>
+                  <button disabled><i className="ri-printer-line"></i>화면인쇄</button>
+                </div>
+              }
             </div>
           </div>
 
@@ -227,40 +231,35 @@ function App(props) {
             && cost > 0 &&
             <div className='tableContents'>
               <table className='table'>
-                <caption>{days && '조회기간 (' + moment(startDate).format("YYYY년 MM월 DD dddd") + ' ~ ' + moment(endDate).format("YYYY년 MM월 DD dddd") + ')'}</caption>
+                <caption>{days && '기간 (' + moment(startDate).format("YYYY년 MM월 DD dddd") + '~' + moment(endDate).format("YYYY년 MM월 DD dddd") + ')'}</caption>
                 <colgroup>
-                  <col width={100} />
-                  <col width={150} />
-                  <col width={150} />
-                  <col width={200} />
-                  <col width={200} />
-                  <col width={200} />
-                  <col width={200} />
+                  <col width={isMobile ? 62 : 124} />
                 </colgroup>
                 <thead>
                   <tr>
-                    <th rowSpan='2'>부대</th>
-                    <th rowSpan='2'>소속</th>
-                    <th rowSpan='2'>월/일/요일</th>
-                    <th colSpan="4">
-                      <span>인원 - 전체 (취식 / 미취식)</span>
+                    <th rowSpan={isMobile ? 1 : 2}>소속</th>
+                    <th rowSpan={isMobile ? 1 : 2}>월/일/요일</th>
+                    <th colSpan={isMobile ? 1 : 4}>
+                      <span>전체 (취식 / 미취식)</span>
                     </th>
 
                   </tr>
-                  <tr>
-                    <th>
-                      <span>조식인원</span>
-                    </th>
-                    <th>
-                      <span>중식인원</span>
-                    </th>
-                    <th>
-                      <span>석식인원</span>
-                    </th>
-                    <th>
-                      <span>계</span>
-                    </th>
-                  </tr>
+                  {
+                    !isMobile &&
+                    <tr>
+                      <th>
+                        <span>조식인원</span>
+                      </th>
+                      <th>
+                        <span>중식인원</span>
+                      </th>
+                      <th>
+                        <span>석식인원</span>
+                      </th>
+                      <th>
+                        <span>계</span>
+                      </th>
+                    </tr>}
                 </thead>
 
                 <tbody>
@@ -271,45 +270,53 @@ function App(props) {
                   {days &&
                     <>
                       <tr>
-                        <th colSpan="3">{days.length + '일간 통계'}</th>
-                        <th>
-                          <span>{days.length * user} ({(days.length * user) - brSum} / {brSum})</span>
-                        </th>
-                        <th>
-                          <span>{days.length * user} ({(days.length * user) - luSum} / {luSum})</span>
-                        </th>
-                        <th>
-                          <span>{days.length * user} ({(days.length * user) - diSum} / {diSum})</span>
-                        </th>
+                        <th colSpan="2">{days.length + '일간 통계'}</th>
+                        {
+                          !isMobile && <>
+                            <th>
+                              <span>{days.length * user} ({(days.length * user) - brSum} / {brSum})</span>
+                            </th>
+                            <th>
+                              <span>{days.length * user} ({(days.length * user) - luSum} / {luSum})</span>
+                            </th>
+                            <th>
+                              <span>{days.length * user} ({(days.length * user) - diSum} / {diSum})</span>
+                            </th>
+                          </>
+                        }
                         <th>
                           <span>{days.length * (user * 3)} ({(days.length * (user * 3)) - totalSum} / {totalSum})</span>
                         </th>
                       </tr>
                       <tr>
-                        <th colSpan="3">
+                        <th colSpan="2">
                           <span className="total">취사계획비용</span>
                           <span className="end">실제사용비용</span>
                           <span className="minus">절감비용</span>
                           <span className="fix">.</span>
                         </th>
-                        <th className="pay">
-                          <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="end">{(((days.length * user) - brSum) * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="minus">{brSum > 0 && '-'}{(brSum * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="fix">.{/*((brSum / (days.length * user)) * 100).toFixed(6)*/}</span>
-                        </th>
-                        <th className="pay">
-                          <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="end">{(((days.length * user) - luSum) * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="minus">{luSum > 0 && '-'}{(luSum * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="fix">.{/*((luSum / (days.length * user)) * 100).toFixed(6)*/}</span>
-                        </th>
-                        <th className="pay">
-                          <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="end">{(((days.length * user) - diSum) * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="minus">{diSum > 0 && '-'}{(diSum * cost).toLocaleString('ko-KR')} 원</span>
-                          <span className="fix">.{/*((diSum / (days.length * user)) * 100).toFixed(6)*/}</span>
-                        </th>
+                        {
+                          !isMobile && <>
+                            <th className="pay">
+                              <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="end">{(((days.length * user) - brSum) * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="minus">{brSum > 0 && '-'}{(brSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="fix">.{/*((brSum / (days.length * user)) * 100).toFixed(6)*/}</span>
+                            </th>
+                            <th className="pay">
+                              <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="end">{(((days.length * user) - luSum) * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="minus">{luSum > 0 && '-'}{(luSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="fix">.{/*((luSum / (days.length * user)) * 100).toFixed(6)*/}</span>
+                            </th>
+                            <th className="pay">
+                              <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="end">{(((days.length * user) - diSum) * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="minus">{diSum > 0 && '-'}{(diSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="fix">.{/*((diSum / (days.length * user)) * 100).toFixed(6)*/}</span>
+                            </th>
+                          </>
+                        }
                         <th className="pay">
                           <span className="total">{(days.length * (user * 3) * cost).toLocaleString('ko-KR')} 원 계획</span>
                           <span className="end">{(((days.length * (user * 3)) - totalSum) * cost).toLocaleString('ko-KR')} 원 사용</span>

@@ -132,7 +132,7 @@
     margin: 0 -2px;
 
     background-color: #f4f4f4;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 8px 0px;
   }
   .mobile-datepicker .month ul:before,
@@ -152,7 +152,7 @@
     margin-bottom: 4px;
     background: #F4F4F4;
     padding: 16px 0px;
-    border-radius: 8px;
+    border-radius: 16px;
     display: none;
   }
   .mobile-datepicker .month ul.days li {

@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { isMobile } from 'react-device-detect';
 import { doc, getDoc } from 'firebase/firestore';
-import classNames from 'classnames';
 
 import mnd from '../assets/logo.svg';
 
@@ -16,7 +14,7 @@ function App(props) {
     const docRef = doc(props.serving, "ini");
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      !isMobile && num === docSnap.data().adminId && pw === docSnap.data().adminPw ? props.sign({ 'userType': 'admin', 'userNum': num }) :
+      num === docSnap.data().adminId && pw === docSnap.data().adminPw ? props.sign({ 'userType': 'admin', 'userNum': num }) :
         !reg_num.test(num) ? setNum(null) : num !== pw ? setPw(null) : props.sign({ 'userType': type, 'userNum': num });
     } else {
       setNum('접속이 원활하지 않습니다')
@@ -24,22 +22,14 @@ function App(props) {
   }
 
   return (
-    <div className={classNames('sign', type === 'army' ? 'sign0' : type === 'air' ? 'sign1' : type === 'navy' && 'sign2')}>
-      <div className='preLoad'><span className='sign0' /><span className='sign1' /><span className='sign2' /><i className="ri-arrow-left-line"/></div>
+
+    <div className="sign">
+      {/*<div className={classNames('sign', type === 'army' ? 'sign0' : type === 'air' ? 'sign1' : type === 'navy' && 'sign2')}>*/}
       <div className="visual">
         <div className="visualText">
           <div className="textGroup">
-            <div className="textWrap"><span className="big">소중한</span><span>장병에게</span></div>
-            <div className="textWrap"><span className="big">건강한</span></div>
-            <div className="textWrap"><span className="big">한끼를</span><span>드립니다</span></div>
-            {/*<span>사</span>
-            <span>병</span>
-            <span>취</span>
-            <span>식</span>
-            <span>일</span>
-            <span>자</span>
-            <span>신</span>
-  <span>청</span>*/}
+            <div className="textWrap"><span className="big">장병</span></div>
+            <div className="textWrap"><span className="big">급식신청</span></div>
           </div>
           <img className='visualLogo' src={mnd} alt={'logo'} />
           <span className="visualTitle"></span>

@@ -7,7 +7,10 @@
   position: relative;
 }
 
-.sign, .App-header, .calendar, .sheet {
+.sign,
+.App-header,
+.calendar,
+.sheet {
   /*max-width: 390px;*/
   width: 100%;
 }
@@ -90,7 +93,7 @@
 
 .textGroup {
   color: #fff;
-  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.24));
+  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.24));
 
   /*background-image: linear-gradient(45deg, #f36910 10%, #ffc871 50%, #ff9d06 80%);
   -webkit-background-clip: text;
@@ -118,6 +121,7 @@
   margin-right: 2px;
   letter-spacing: 0;
 }
+
 .preLoad {
   position: fixed;
   overflow: hidden;
@@ -199,7 +203,7 @@
 
 .form .input {
   border: 1px solid rgba(0, 0, 0, 0.36);
-  border-radius: 8px 8px 0px 0px;
+  border-radius: 16px 16px 0px 0px;
   width: 100%;
   height: 48px;
   min-height: 48px;
@@ -216,18 +220,19 @@
 }
 
 .form .input.pw {
-  border-radius: 0px 0px 8px 8px;
+  border-radius: 0px 0px 16px 16px;
 
 }
 
-.form .button, .button.save {
+.form .button,
+.button.save {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #0277bd;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 16px;
   min-height: 48px;
   max-height: 48px;
   height: 48px;
@@ -326,7 +331,8 @@
   justify-content: center;
 }
 
-.button.menu, .button.back {
+.button.menu,
+.button.back {
   padding: 0;
   border: none;
   height: 56px;
@@ -338,7 +344,8 @@
   justify-content: center;
 }
 
-.button.menu i, .button.back i {
+.button.menu i,
+.button.back i {
   font-size: 24px;
 }
 
@@ -373,7 +380,7 @@
   position: fixed;
   top: 0;
   /*box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.24);*/
-  filter: drop-shadow(2px -4px 8px rgba(0,0,0,0.24));
+  filter: drop-shadow(2px -4px 8px rgba(0, 0, 0, 0.24));
   transition: all ease-in-out 0.3s;
   z-index: 3;
   display: flex;
@@ -425,7 +432,6 @@
 
 .sheet .body {
   padding: 16px 0 0;
-  /*height: calc(100% - 112px);*/
   overflow-y: auto;
   flex: 1;
 }
@@ -489,6 +495,39 @@
   margin-bottom: 0px;
 }
 
+.sheet .body.comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sheet .body.comp>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 98px;
+  height: 98px;
+  border: 4px solid #e1e1e4;
+  border-radius: 98px;
+  margin-bottom: 16px;
+}
+
+.sheet .body.comp>div i {
+  font-size: 48px;
+  color: #0078d7;
+}
+
+.sheet .comment {
+  padding: 16px;
+  background-color: #f4f4f4;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  word-break: keep-all;
+}
+
 .contents .foodItem {
   display: flex;
   flex-direction: row;
@@ -522,7 +561,8 @@
   min-width: 96px;
 }
 
-.checkbox label:hover, .checkbox label:focus {
+.checkbox label:hover,
+.checkbox label:focus {
   background-color: transparent;
 }
 
@@ -574,7 +614,7 @@
   justify-content: space-around;
   height: 48px;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 16px;
   top: 56px;
   left: 14px;
   position: fixed;
@@ -620,6 +660,32 @@
 .textWrap .big {
   font-weight: 800;
   margin-right: 8px;
+}
+
+.sheet .buttonGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: none;
+}
+
+.sheet .buttonGroup .button {
+  height: 48px !important;
+  border-radius: 16px;
+  flex: 1;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.sheet .buttonGroup .button:first-child {
+  margin-right: 8px;
+  background-color: #242424;
+}
+
+.sheet .buttonGroup .button:last-child {
+  margin-left: 8px;
+  background-color: #0277bd;
 }
 
 /*.visual .visualText {
@@ -698,7 +764,7 @@
   height: 768px;
   border-radius: 16px;
   /*box-shadow: 0 0 24px rgba(0, 0, 0, 0.48);*/
-  filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.24));
+  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.24));
 }
 
 @media (max-width: 424.9px) {

@@ -26,8 +26,8 @@ function App(props) {
     setDate(item)
   }
 
-  const reset = (item) => {
-    setDate(null)
+  const reset = (flag) => {
+    !flag ? setDate(null) : setUser(null);
   }
 
   return (
