@@ -32,7 +32,7 @@ function App(props) {
 
   return (
     <div className="App">
-        {user ? user.userType === 'admin' ? <Admin serving={props.serving} /> :
+        {user ? user.userType === 'admin' ? <Admin serving={props.serving} user={user}/> :
           <>
             <header className="App-header">
               <button className="button back" onClick={event => { setUser(null) }}><i className="ri-arrow-left-line"></i></button>

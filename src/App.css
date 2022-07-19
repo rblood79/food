@@ -20,12 +20,14 @@
 }
 
 .copy {
-  min-height: 48px;
+  min-height: 148px;
+  height: 148px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   font-size: 14px;
-  color: #efefef;
+  color: #fff;
+  filter: drop-shadow(0px 0px 2px black);
 }
 
 .typeGroup {
@@ -55,6 +57,7 @@
   background-repeat: no-repeat;
   background-position: center 6px;
   background-size: contain;
+  filter: drop-shadow(2px 4px 8px #2b6b2c);
 }
 
 .typeGroup .buttonWrap.air::before {
@@ -65,6 +68,7 @@
   background-repeat: no-repeat;
   background-position: center 4px;
   background-size: contain;
+  filter: drop-shadow(2px 4px 8px #2b6b2c);
 }
 
 .typeGroup .buttonWrap.navy::before {
@@ -75,6 +79,7 @@
   background-repeat: no-repeat;
   background-position: center 6px;
   background-size: contain;
+  filter: drop-shadow(2px 4px 8px #2b6b2c);
 }
 
 .button.army {
@@ -92,13 +97,25 @@
 }
 
 .textGroup {
-  color: #fff;
-  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.24));
-
   /*background-image: linear-gradient(45deg, #f36910 10%, #ffc871 50%, #ff9d06 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: fit-content;*/
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textGroup .food {
+  width: 96px;
+  filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.24));
+  margin-top: 8px;
+  /*position: absolute;
+  right: 0;
+  top: -42px;
+  transform: rotate(325deg);
+  z-index: 0;*/
 }
 
 .typeGroup .button.army::before {
@@ -139,15 +156,16 @@
   justify-content: space-between;
   padding: 16px;
   transition: all 0.4s ease-in-out;
-  background-color: #242424;
+  background-color: #60c95d;
 
 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.1) 82%), url("./assets/bg.jpg");
+  background-image: url("./assets/background.png");
   background-position: center bottom;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.sign0 {
+/*.sign0 {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.1) 56%), url("./assets/army.jpg");
   background-position: right center;
   background-size: cover;
@@ -163,7 +181,7 @@
   background: linear-gradient(to bottom, rgba(214, 219, 228, 0.9) 0%, rgba(0, 0, 0, 0.2) 48%), url("./assets/navy.jpg");
   background-position: center center;
   background-size: cover;
-}
+}*/
 
 .visual {
   width: 100%;
@@ -171,16 +189,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  flex: 1;
   padding-top: 24px;
 }
 
 
 .visualLogo {
-  width: 128px;
+  width: 96px;
   padding-top: 16px;
-  position: fixed;
-  top: calc(50% - 64px);
+  /*position: fixed;
+  top: calc(50% - 64px);*/
 }
 
 .form {
@@ -202,7 +219,7 @@
 }
 
 .form .input {
-  border: 1px solid rgba(0, 0, 0, 0.36);
+  border: 1px solid #499947;
   border-radius: 16px 16px 0px 0px;
   width: 100%;
   height: 48px;
@@ -215,7 +232,7 @@
 }
 
 .form .input:focus {
-  border-color: #0277bd;
+  border-color: #2b6b2c;
   z-index: 1;
 }
 
@@ -229,7 +246,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0277bd;
+  background-color: #2b6b2c;
   color: #fff;
   border: none;
   border-radius: 16px;
@@ -243,29 +260,42 @@
 
 .button.save {
   margin-top: 16px;
+  position: relative;
+  z-index: 10;
 }
 
-.form .back {
+/*.button.save::before {
+  content: 'AA';
+  width: 100%;
+  height: 112px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0) 64%);
+  position: absolute;
+  bottom: calc(100% + 16px);
+}*/
+z .form .back, .form .backButton {
   border: none;
   background-color: transparent;
+  width: fit-content;
   min-height: 40px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0;
+  padding: 0 16px 0 0;
   color: #fff;
   font-weight: 800;
 }
 
 .form .back i {
   font-size: 24px;
-  color: #0277bd;
+  color: #2b6b2c;
   margin-right: 4px;
 }
 
 .form .back span {
   font-size: 16px;
   font-weight: 400;
+  margin-top: 4px;
+  color: #2b6b2c;
 }
 
 .form .select {
@@ -288,7 +318,7 @@
   align-items: center;
   justify-content: flex-start;
   min-height: 36px;
-  color: #E67E22;
+  color: #0c4428;
   font-size: 12px;
   margin-bottom: 16px;
 }
@@ -298,7 +328,7 @@
   align-items: center;
   justify-content: flex-start;
   min-height: 36px;
-  color: #999;
+  color: #f7e352;
   font-size: 12px;
   font-weight: 800;
   margin-right: 4px;
@@ -516,7 +546,7 @@
 
 .sheet .body.comp>div i {
   font-size: 48px;
-  color: #0078d7;
+  color: #3cb73c;
 }
 
 .sheet .comment {
@@ -596,7 +626,7 @@
 }
 
 .checkbox input:checked:before {
-  background-color: #0277bd;
+  background-color: #2b6b2c;
 }
 
 .checkbox input:checked:after {
@@ -604,7 +634,7 @@
 }
 
 .week {
-  background-color: #0277bd;
+  background-color: #2b6b2c;
   color: #fff;
   list-style: none;
   margin: 0;
@@ -622,10 +652,10 @@
 }
 
 .itemComment {
-  background: #242424;
+  background: #f7e352;
   padding: 16px;
   border-radius: 16px;
-  color: #E67E22;
+  color: #0b4327;
   font-size: 12px;
   display: flex;
   flex-direction: column;
@@ -636,6 +666,15 @@
 /*.itemComment span:last-child{
   margin-top: 8px;
 }*/
+.visualImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #2b6b2c;
+  font-weight: 800;
+  font-size: 12px;
+}
 
 .visualText {
   display: flex;
@@ -652,14 +691,28 @@
 }
 
 .textWrap {
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 100;
-  letter-spacing: 2px;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  position: relative;
+}
+
+.textWrap .small {
+  font-size: 16px;
+  font-weight: 800;
+  color: #2b6b2c;
+  letter-spacing: 0px;
 }
 
 .textWrap .big {
   font-weight: 800;
-  margin-right: 8px;
+  line-height: 56px;
+  color: #0c4428;
+  letter-spacing: 4px;
+  filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.16));
 }
 
 .sheet .buttonGroup {
@@ -685,8 +738,9 @@
 
 .sheet .buttonGroup .button:last-child {
   margin-left: 8px;
-  background-color: #0277bd;
+  background-color: #2b6b2c;
 }
+
 
 /*.visual .visualText {
   position: relative;

@@ -10,7 +10,7 @@ import '../admin.css';
 
 import mnd from '../assets/logo.svg';
 
-import { doc, getDoc, setDoc, query, getDocs, documentId, where } from 'firebase/firestore';
+import { doc, getDoc, setDoc, query, getDocs, documentId, where, deleteDoc } from 'firebase/firestore';
 
 function App(props) {
 
@@ -32,13 +32,30 @@ function App(props) {
   const docRef = doc(props.serving, "ini");
   const q = query(props.serving, where(documentId(), ">=", startDate), where(documentId(), "<=", moment(endDate).format("YYYYMMDD")));
 
+  //const qa = query(props.test, where(documentId(), ">=", startDate), where(documentId(), "<=", moment(endDate).format("YYYYMMDD")));
+
+  const clear = async () => {
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      deleteItem(doc.id)
+    });
+    onLoad();
+  }
+
+  const deleteItem = async (nameId) => {
+    const docRef = doc(props.serving, nameId);
+    deleteDoc(docRef)
+      .then(() => {
+        //console.log("Entire Document has been deleted successfully.")
+      })
+  }
+
   const ini = async () => {
-    //console.log('ini');
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       setUser(docSnap.data().user);
       setCost(docSnap.data().cost);
-      setAdmin(docSnap.data().adminId);
+      setAdmin(props.user.userNum);
     } else {
       setUser(1000);
       setCost(3666);
@@ -144,13 +161,16 @@ function App(props) {
       <main className='main'>
         <section className='section result'>
           <div className="resultHead">
-            <h2 className="title">종합현황 <span className="titleSub">시험버전</span></h2>
+            <h2 className="title">종합현황</h2>
             <div className="buttonGroup">
               <button onClick={() => { onLoad() }}><i className="ri-refresh-line"></i>재조회</button>
+              {admin === 'rblood' && <button onClick={() => {
+                window.confirm('삭제시 복구 할수 없습니다. 다시 한번 확인하세요.') && clear();
+              }}><i className="ri-delete-bin-2-line"></i>기간데이터삭제</button>}
               {!isMobile &&
                 <div className="wrap">
-                  <button disabled><i className="ri-folder-upload-line"></i>취사인원 업로드</button>
-                  <button disabled><i className="ri-folder-download-line"></i>부대별 현황 다운로드</button>
+                  <button disabled><i className="ri-folder-upload-line"></i>취식인원 업로드</button>
+                  <button disabled><i className="ri-folder-download-line"></i>현황 다운로드</button>
                   <button disabled><i className="ri-printer-line"></i>화면인쇄</button>
                 </div>
               }

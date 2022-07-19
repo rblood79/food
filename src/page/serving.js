@@ -138,7 +138,6 @@ function App(props) {
   const onLoad = async () => {
     const docRef = doc(props.serving, moment(props.date).format("YYYYMMDD"));
     const docSnap = await getDoc(docRef);
-
     if (docSnap.exists()) {
       const data = docSnap.data();
       setBr(data['조식'].indexOf(props.user.userNum) === -1 ? true : false);
