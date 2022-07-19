@@ -123,12 +123,25 @@ function App(props) {
         <tr key={days[i]}>
           {i === 0 && <><td rowSpan={days.length}>oo부대</td></>}
           <td>{moment(days[i]).format("MM월 DD일 (dd)")}</td>
-          {!isMobile && <>
-            <td>{user} ({user - brUser} / {brUser})</td>
-            <td>{user} ({user - luUser} / {luUser})</td>
-            <td>{user} ({user - diUser} / {diUser})</td>
-          </>}
-          <td>{user * 3} ({(user * 3) - total} / {total})</td>
+          {
+            !isMobile ? <>
+              <td>{user} ({user - brUser} / {brUser})</td>
+              <td>{user} ({user - luUser} / {luUser})</td>
+              <td>{user} ({user - diUser} / {diUser})</td>
+              <td>{user * 3} ({(user * 3) - total} / {total})</td>
+            </> :
+              <td>
+                <div className="tdm">
+                  <span>조식: {user} ({user - brUser} / {brUser})</span>
+                  <span>중식: {user} ({user - luUser} / {luUser})</span>
+                  <span>석식: {user} ({user - diUser} / {diUser})</span>
+                  <span className="totalm">합계: {user * 3} ({(user * 3) - total} / {total})</span>
+                </div>
+              </td>
+          }
+
+
+
         </tr>
       )
     }
@@ -254,6 +267,7 @@ function App(props) {
                 <caption>{days && '기간 (' + moment(startDate).format("YYYY년 MM월 DD dddd") + '~' + moment(endDate).format("YYYY년 MM월 DD dddd") + ')'}</caption>
                 <colgroup>
                   <col width={isMobile ? 62 : 124} />
+                  <col width="110" />
                 </colgroup>
                 <thead>
                   <tr>
@@ -292,7 +306,7 @@ function App(props) {
                       <tr>
                         <th colSpan="2">{days.length + '일간 통계'}</th>
                         {
-                          !isMobile && <>
+                          !isMobile ? <>
                             <th>
                               <span>{days.length * user} ({(days.length * user) - brSum} / {brSum})</span>
                             </th>
@@ -302,11 +316,20 @@ function App(props) {
                             <th>
                               <span>{days.length * user} ({(days.length * user) - diSum} / {diSum})</span>
                             </th>
-                          </>
+                            <th>
+                              <span>{days.length * (user * 3)} ({(days.length * (user * 3)) - totalSum} / {totalSum})</span>
+                            </th>
+                          </> :
+                            <th>
+                              <div className="tdm">
+                                <span>조식: {days.length * user} ({(days.length * user) - brSum} / {brSum})</span>
+                                <span>중식: {days.length * user} ({(days.length * user) - luSum} / {luSum})</span>
+                                <span>석식: {days.length * user} ({(days.length * user) - diSum} / {diSum})</span>
+                                <span className="totalm">합계: {days.length * (user * 3)} ({(days.length * (user * 3)) - totalSum} / {totalSum})</span>
+                              </div>
+                            </th>
                         }
-                        <th>
-                          <span>{days.length * (user * 3)} ({(days.length * (user * 3)) - totalSum} / {totalSum})</span>
-                        </th>
+
                       </tr>
                       <tr>
                         <th colSpan="2">

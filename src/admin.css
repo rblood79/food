@@ -182,10 +182,16 @@
     min-width: 48px;
     word-break: keep-all;
     text-align: center;
+    font-weight: 400;
 }
 
 .table thead tr th {
     background-color: #e8e8e8;
+}
+
+.table tfoot th span {
+    display: block;
+    padding: 0px;
 }
 
 
@@ -436,5 +442,14 @@ caption {
 
     caption {
         font-size: 14px;
+    }
+
+    .tdm {
+        display: flex;
+        flex-direction: column;
+        color: #646464;
+    }
+    .totalm {
+        color: #000;
     }
 }
