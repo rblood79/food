@@ -27,7 +27,6 @@ function App(props) {
   return (
 
     <div className="sign">
-      {/*<div className={classNames('sign', type === 'army' ? 'sign0' : type === 'air' ? 'sign1' : type === 'navy' && 'sign2')}>*/}
       <div className="visualImage">
         <img className='visualLogo' src={mnd} alt={'logo'} />
         <span>대한민국 국방부</span>

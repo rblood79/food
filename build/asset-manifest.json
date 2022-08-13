@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/food/build/static/css/main.aeb19599.css",
-    "main.js": "/food/build/static/js/main.d492d5f5.js",
+    "main.js": "/food/build/static/js/main.7204dbed.js",
     "static/js/787.5d0d83ed.chunk.js": "/food/build/static/js/787.5d0d83ed.chunk.js",
     "static/media/remixicon.svg?t=1590207869815": "/food/build/static/media/remixicon.9cedd2150922ead84869.svg",
     "static/media/remixicon.eot?t=1590207869815": "/food/build/static/media/remixicon.5cb99e6cba5a4619063f.eot",
@@ -13,11 +13,11 @@
     "static/media/logo.svg": "/food/build/static/media/logo.cb9174d8564d2e0d977ac83b91c37b00.svg",
     "index.html": "/food/build/index.html",
     "main.aeb19599.css.map": "/food/build/static/css/main.aeb19599.css.map",
-    "main.d492d5f5.js.map": "/food/build/static/js/main.d492d5f5.js.map",
+    "main.7204dbed.js.map": "/food/build/static/js/main.7204dbed.js.map",
     "787.5d0d83ed.chunk.js.map": "/food/build/static/js/787.5d0d83ed.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aeb19599.css",
-    "static/js/main.d492d5f5.js"
+    "static/js/main.7204dbed.js"
   ]
 }

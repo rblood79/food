@@ -32,8 +32,6 @@ function App(props) {
   const docRef = doc(props.serving, "ini");
   const q = query(props.serving, where(documentId(), ">=", startDate), where(documentId(), "<=", moment(endDate).format("YYYYMMDD")));
 
-  //const qa = query(props.test, where(documentId(), ">=", startDate), where(documentId(), "<=", moment(endDate).format("YYYYMMDD")));
-
   const clear = async () => {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -214,7 +212,7 @@ function App(props) {
                 dateFormat="yyyy년 MM월 dd일"
                 className="datepicker"
                 //minDate={new Date()}
-                closeOnScroll={true}
+                //closeOnScroll={true}
                 selected={moment(startDate).toDate()}
                 onChange={(date) => setStartDate(moment(date).format("YYYYMMDD"))}
               />
@@ -228,7 +226,7 @@ function App(props) {
                 dateFormat="yyyy년 MM월 dd일"
                 className="datepicker"
                 minDate={moment(startDate).toDate()}
-                closeOnScroll={true}
+                //closeOnScroll={true}
                 selected={moment(endDate).toDate()}
                 onChange={(date) => setEndDate(moment(date).format("YYYYMMDD"))}
               />
