@@ -29,7 +29,7 @@ function App(props) {
     <div className="sign">
       <div className="visualImage">
         <img className='visualLogo' src={mnd} alt={'logo'} />
-        <span>대한민국 국방부A</span>
+        <span>대한민국 국방부B</span>
       </div>
       <div className="visual">
         <div className="visualText">

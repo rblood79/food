@@ -176,8 +176,8 @@ function App(props) {
             <div className="buttonGroup">
               <button onClick={() => { onLoad() }}><i className="ri-refresh-line"></i>재조회</button>
               {admin === 'rblood' && <button onClick={() => {
-                window.confirm('삭제시 복구 할수 없습니다. 다시 한번 확인하세요.') && clear();
-              }}><i className="ri-delete-bin-2-line"></i>기간데이터삭제</button>}
+                window.confirm('선택한 기간의 데이터를 삭제 합니다 삭제시 복구 할수 없습니다. 다시 한번 확인하세요.') && clear();
+              }}><i className="ri-delete-bin-2-line"></i>데이터삭제</button>}
               {!isMobile &&
                 <div className="wrap">
                   <button disabled><i className="ri-folder-upload-line"></i>취식인원 업로드</button>
