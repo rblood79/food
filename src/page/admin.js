@@ -22,6 +22,8 @@ function App(props) {
   const [user, setUser] = useState(0);
   const [cost, setCost] = useState(0);
 
+  const [comment, setComment] = useState('');
+
   const [brSum, setBrSum] = useState(0);
   const [luSum, setLuSum] = useState(0);
   const [diSum, setDiSum] = useState(0);
@@ -54,9 +56,11 @@ function App(props) {
       setUser(docSnap.data().user);
       setCost(docSnap.data().cost);
       setAdmin(props.user.userNum);
+      setComment(docSnap.data().comment);
     } else {
       setUser(1000);
       setCost(3666);
+      setComment('시험버전은 통계확인을 위한 용도이며 실제 취사유무에는 반영되지 않으며 메뉴는 랜덤으로 보여지게 됩니다.');
     };
   }
 
@@ -123,17 +127,17 @@ function App(props) {
           <td>{moment(days[i]).format("MM월 DD일 (dd)")}</td>
           {
             !isMobile ? <>
-              <td>{user} ({user - brUser} / {brUser})</td>
-              <td>{user} ({user - luUser} / {luUser})</td>
-              <td>{user} ({user - diUser} / {diUser})</td>
-              <td>{user * 3} ({(user * 3) - total} / {total})</td>
+              <td>{user} ({brUser} / {user - brUser})</td>
+              <td>{user} ({luUser} / {user - luUser})</td>
+              <td>{user} ({diUser} / {user - diUser})</td>
+              <td>{user * 3} ({total} / {(user * 3) - total})</td>
             </> :
               <td>
                 <div className="tdm">
-                  <span>조식: {user} ({user - brUser} / {brUser})</span>
-                  <span>중식: {user} ({user - luUser} / {luUser})</span>
-                  <span>석식: {user} ({user - diUser} / {diUser})</span>
-                  <span className="totalm">합계: {user * 3} ({(user * 3) - total} / {total})</span>
+                  <span>조식: {user} ({brUser} / {user - brUser})</span>
+                  <span>중식: {user} ({luUser} / {user - luUser})</span>
+                  <span>석식: {user} ({diUser} / {user - diUser})</span>
+                  <span className="totalm">합계: {user * 3} ({total} / {(user * 3) - total})</span>
                 </div>
               </td>
           }
@@ -187,6 +191,15 @@ function App(props) {
               }
             </div>
           </div>
+          {!isMobile &&
+            <div className="comments">
+              <label htmlFor="com">신청 상단 메모</label>
+              <input type='textarea' id="com" placeholder="참여 인원수를 넣으세요" value={comment || ''} onChange={({ target: { value } }) => {
+                setComment(value);
+                setDoc(docRef, { comment: value }, { merge: true });
+              }} />
+            </div>
+          }
 
           <div className="setting">
             <div>
@@ -306,24 +319,24 @@ function App(props) {
                         {
                           !isMobile ? <>
                             <th>
-                              <span>{days.length * user} ({(days.length * user) - brSum} / {brSum})</span>
+                              <span>{days.length * user} ({brSum} / {(days.length * user) - brSum})</span>
                             </th>
                             <th>
-                              <span>{days.length * user} ({(days.length * user) - luSum} / {luSum})</span>
+                              <span>{days.length * user} ({luSum} / {(days.length * user) - luSum})</span>
                             </th>
                             <th>
-                              <span>{days.length * user} ({(days.length * user) - diSum} / {diSum})</span>
+                              <span>{days.length * user} ({diSum} / {(days.length * user) - diSum})</span>
                             </th>
                             <th>
-                              <span>{days.length * (user * 3)} ({(days.length * (user * 3)) - totalSum} / {totalSum})</span>
+                              <span>{days.length * (user * 3)} ({totalSum} / {(days.length * (user * 3)) - totalSum})</span>
                             </th>
                           </> :
                             <th>
                               <div className="tdm">
-                                <span>조식: {days.length * user} ({(days.length * user) - brSum} / {brSum})</span>
-                                <span>중식: {days.length * user} ({(days.length * user) - luSum} / {luSum})</span>
-                                <span>석식: {days.length * user} ({(days.length * user) - diSum} / {diSum})</span>
-                                <span className="totalm">합계: {days.length * (user * 3)} ({(days.length * (user * 3)) - totalSum} / {totalSum})</span>
+                                <span>조식: {days.length * user} ({brSum} / {(days.length * user) - brSum})</span>
+                                <span>중식: {days.length * user} ({luSum} / {(days.length * user) - luSum})</span>
+                                <span>석식: {days.length * user} ({diSum} / {(days.length * user) - diSum})</span>
+                                <span className="totalm">합계: {days.length * (user * 3)} ({totalSum} / {(days.length * (user * 3)) - totalSum})</span>
                               </div>
                             </th>
                         }
@@ -340,29 +353,29 @@ function App(props) {
                           !isMobile && <>
                             <th className="pay">
                               <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                              <span className="end">{(((days.length * user) - brSum) * cost).toLocaleString('ko-KR')} 원</span>
-                              <span className="minus">{brSum > 0 && '-'}{(brSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="end">{(brSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="minus">{brSum > 0 && '-'}{((days.length * user - brSum) * cost).toLocaleString('ko-KR')} 원</span>
                               <span className="fix">.{/*((brSum / (days.length * user)) * 100).toFixed(6)*/}</span>
                             </th>
                             <th className="pay">
                               <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                              <span className="end">{(((days.length * user) - luSum) * cost).toLocaleString('ko-KR')} 원</span>
-                              <span className="minus">{luSum > 0 && '-'}{(luSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="end">{(luSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="minus">{luSum > 0 && '-'}{((days.length * user - luSum) * cost).toLocaleString('ko-KR')} 원</span>
                               <span className="fix">.{/*((luSum / (days.length * user)) * 100).toFixed(6)*/}</span>
                             </th>
                             <th className="pay">
                               <span className="total">{(days.length * user * cost).toLocaleString('ko-KR')} 원</span>
-                              <span className="end">{(((days.length * user) - diSum) * cost).toLocaleString('ko-KR')} 원</span>
-                              <span className="minus">{diSum > 0 && '-'}{(diSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="end">{(diSum * cost).toLocaleString('ko-KR')} 원</span>
+                              <span className="minus">{diSum > 0 && '-'}{((days.length * user - diSum) * cost).toLocaleString('ko-KR')} 원</span>
                               <span className="fix">.{/*((diSum / (days.length * user)) * 100).toFixed(6)*/}</span>
                             </th>
                           </>
                         }
                         <th className="pay">
                           <span className="total">{(days.length * (user * 3) * cost).toLocaleString('ko-KR')} 원 계획</span>
-                          <span className="end">{(((days.length * (user * 3)) - totalSum) * cost).toLocaleString('ko-KR')} 원 사용</span>
-                          <span className="minus">{totalSum > 0 && '-'}{(totalSum * cost).toLocaleString('ko-KR')} 원 절감</span>
-                          <span>{((totalSum / (days.length * (user * 3))) * 100).toFixed(2)}% 감소</span>
+                          <span className="end">{(totalSum * cost).toLocaleString('ko-KR')} 원 사용</span>
+                          <span className="minus">{totalSum > 0 && '-'} {(((days.length * user * 3) - totalSum) * cost).toLocaleString('ko-KR')} 원 절감</span>
+                          <span>{(((days.length * user * 3) - totalSum) / (days.length * user * 3) * 100).toFixed(2)}% 절감</span>
                         </th>
                       </tr>
                     </>

@@ -12,9 +12,9 @@ function App(props) {
 
   const [flag, setFlag] = useState(false);
 
-  const [br, setBr] = useState(true);
-  const [lu, setLu] = useState(true);
-  const [di, setDi] = useState(true);
+  const [br, setBr] = useState(false);
+  const [lu, setLu] = useState(false);
+  const [di, setDi] = useState(false);
 
   const [menu, setMenu] = useState(null);
   const [foods] = useState(
@@ -85,11 +85,10 @@ function App(props) {
   const save = async () => {
     const dateRef = doc(props.serving, moment(props.date).format("YYYYMMDD"));
     setDoc(dateRef, {
-      조식: br ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
-      중식: lu ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
-      석식: di ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
+      조식: !br ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
+      중식: !lu ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
+      석식: !di ? arrayRemove(props.user.userNum) : arrayUnion(props.user.userNum),
     }, { merge: true });
-    //props.reset();
     setFlag(true);
   }
 
@@ -98,6 +97,8 @@ function App(props) {
   }
 
   const items = () => {
+    const sat = moment(props.date).day() === 6 ? true : false;
+
     const result = [];
     for (let i = 0; i < 3; i++) {
       const dd = i === 0 ? br : i === 1 ? lu : di;
@@ -123,7 +124,9 @@ function App(props) {
               </div>
             </div>
           </div>
-          <div className="checkbox"><label htmlFor={"chk" + i}>{i === 0 ? '조식' : i === 1 ? '중식' : '석식'} {dd ? '먹어요' : '안먹어요'}</label><input type='checkbox' id={"chk" + i} checked={dd}
+          <div className="checkbox">
+            <label htmlFor={"chk" + i}>{i === 0 ? '조식' : i === 1 ? '중식' : '석식'} {dd ? '먹어요' : '안먹어요'}</label>
+            <input type='checkbox' id={"chk" + i} checked={dd}
             onChange={
               event => {
                 i === 0 ? setBr(event.target.checked) : i === 1 ? setLu(event.target.checked) : setDi(event.target.checked)
@@ -136,13 +139,16 @@ function App(props) {
   }
 
   const onLoad = async () => {
+    //console.log('//', props)
     const docRef = doc(props.serving, moment(props.date).format("YYYYMMDD"));
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const data = docSnap.data();
-      setBr(data['조식'].indexOf(props.user.userNum) === -1 ? true : false);
-      setLu(data['중식'].indexOf(props.user.userNum) === -1 ? true : false);
-      setDi(data['석식'].indexOf(props.user.userNum) === -1 ? true : false);
+      //console.log(data)
+      //console.log(props.user.userNum, data['조식'].indexOf(props.user.userNum))
+      setBr(data['조식'].indexOf(props.user.userNum) > -1 ? true : false);
+      setLu(data['중식'].indexOf(props.user.userNum) > -1 ? true : false);
+      setDi(data['석식'].indexOf(props.user.userNum) > -1 ? true : false);
     } else {
       //console.log('not result')
     };
@@ -155,9 +161,9 @@ function App(props) {
     setMenu(temp.sort(() => Math.random() - 0.5))
 
     setFlag(false);
-    setBr(true);
-    setLu(true);
-    setDi(true);
+    setBr(false);
+    setLu(false);
+    setDi(false);
 
     onLoad();
   }, [props.date])
@@ -171,7 +177,7 @@ function App(props) {
         </div>
         <div className="body" ref={bodyRef}>
           <div className="itemComment">
-            <span>시험버전은 통계확인을 위한 용도이며 실제 취사유무에는 반영되지 않으며 메뉴는 랜덤으로 보여지게 됩니다.</span>
+            <span>{props.user.comment}</span>
           </div>
           {menu && items()}
         </div>

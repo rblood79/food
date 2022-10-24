@@ -17,8 +17,8 @@ function App(props) {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       num === docSnap.data().adminId && pw === docSnap.data().adminPw ? props.sign({ 'userType': 'admin', 'userNum': num }) :
-      num === docSnap.data().rootId && pw === docSnap.data().rootPw ? props.sign({ 'userType': 'admin', 'userNum': num }) :
-        !reg_num.test(num) ? setNum(null) : num !== pw ? setPw(null) : props.sign({ 'userType': type, 'userNum': num });
+        num === docSnap.data().rootId && pw === docSnap.data().rootPw ? props.sign({ 'userType': 'admin', 'userNum': num }) :
+          !reg_num.test(num) ? setNum(null) : num !== pw ? setPw(null) : props.sign({ 'userType': type, 'userNum': num, 'comment': docSnap.data().comment });
     } else {
       setNum('접속이 원활하지 않습니다')
     };
@@ -34,7 +34,7 @@ function App(props) {
       <div className="visual">
         <div className="visualText">
           <div className="textGroup">
-            
+
             <div className="textWrap">
               <span className="small">급식 만족도 향상을 위한</span>
               <span className="big">장병 급식 신청</span>
@@ -57,11 +57,10 @@ function App(props) {
                 setPw(value)
               }} autoComplete="off" /></form>
               <span className="comment">아이디와 비밀번호는 군번이며 - 를 제외하고 입력하세요</span>
-              <button className="button" onClick={()=>{click()}}>로그인</button>
+              <button className="button" onClick={() => { click() }}>로그인</button>
             </>
             :
             <>
-              {/*<span className="select">소속군을 선택하세요<i className="ri-arrow-down-s-line"></i></span>*/}
               <div className="typeGroup">
                 <div className="buttonWrap army"><button className="button army" onClick={event => { setType('army') }}>육군</button></div>
                 <div className="buttonWrap air"><button className="button air" onClick={event => { setType('air') }}>공군</button></div>
