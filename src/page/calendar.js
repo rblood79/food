@@ -9,7 +9,7 @@ function App(props) {
       <div className="calendar">
         <ul className="week"><li>일</li><li>월</li><li>화</li><li>수</li><li>목</li><li>금</li><li>토</li></ul>
         <MobileCalendar
-          minDate={moment().add(0, 'd')}
+          minDate={moment().add(-7, 'd')}
           //selectedDate={moment()}
           maxDate={moment().add(1, 'M')}
           onSelect={date => {props.onClick(date)}}
