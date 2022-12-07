@@ -153,10 +153,12 @@ function App(props) {
 
   useEffect(() => {
     onLoad();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate, endDate])
 
   useEffect(() => {
     ini();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -271,8 +273,7 @@ function App(props) {
             </div>
           </div>
           {
-            user > brSum && user > luSum && user > diSum
-            && cost > 0 &&
+            //user > brSum && user > luSum && user > diSum && cost > 0 &&
             <div className='tableContents'>
               <table className='table'>
                 <caption>{days && '기간 (' + moment(startDate).format("YYYY년 MM월 DD dddd") + '~' + moment(endDate).format("YYYY년 MM월 DD dddd") + ')'}</caption>

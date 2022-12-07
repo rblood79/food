@@ -97,7 +97,7 @@ function App(props) {
   }
 
   const items = () => {
-    const sat = moment(props.date).day() === 6 ? true : false;
+    //const sat = moment(props.date).day() === 6 ? true : false;
 
     const result = [];
     for (let i = 0; i < 3; i++) {
@@ -166,6 +166,7 @@ function App(props) {
     setDi(false);
 
     onLoad();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.date])
 
   return (
